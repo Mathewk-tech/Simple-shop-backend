@@ -16,7 +16,18 @@ A secure, crash-safe Node.js Express backend for integrating with Safaricom's M-
 This backend includes CORS (Cross-Origin Resource Sharing) support to allow your frontend application to make requests:
 
 - **Development**: All origins allowed by default
-- **Production**: Configure `FRONTEND_URL` in your `.env` file for security
+- **Production**: Uses explicit allowlist from `FRONTEND_URL` environment variable
+- **Vercel Frontend**: Set `FRONTEND_URL=https://your-app.vercel.app` for proper CORS handling
+- **Multiple Domains**: Separate multiple URLs with commas in `FRONTEND_URL`
+- **Preflight Requests**: OPTIONS requests are explicitly handled for all routes
+
+### CORS Configuration
+
+- ✅ Handles preflight OPTIONS requests
+- ✅ Allows GET, POST, PUT, DELETE, OPTIONS methods
+- ✅ Allows Content-Type and Authorization headers
+- ✅ Credentials disabled (not required for this API)
+- ✅ Explicit origin allowlist in production
 
 ### Example Frontend Request
 

@@ -4,9 +4,13 @@
  */
 
 const express = require('express');
+const cors = require('cors');
 const router = express.Router();
 const mpesaService = require('../services/mpesa.service');
 const { normalizePhoneNumber } = require('../utils/phoneFormatter');
+
+// OPTIONS /api/mpesa/stk-push - Handle preflight requests
+router.options('/stk-push', cors());
 
 // POST /api/mpesa/stk-push
 router.post('/stk-push', async (req, res) => {
@@ -83,6 +87,9 @@ router.post('/stk-push', async (req, res) => {
     });
   }
 });
+
+// OPTIONS /api/mpesa/callback - Handle preflight requests
+router.options('/callback', cors());
 
 // POST /api/mpesa/callback
 router.post('/callback', (req, res) => {
