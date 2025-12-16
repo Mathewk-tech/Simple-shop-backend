@@ -9,6 +9,41 @@ A secure, crash-safe Node.js Express backend for integrating with Safaricom's M-
 - 📱 **STK Push**: Initiate mobile payments via M-Pesa
 - 🔄 **Callback Handling**: Process payment confirmations
 - 🛡️ **Defensive Programming**: Comprehensive error handling
+- 🌐 **CORS Enabled**: Ready for frontend integration
+
+## Frontend Integration
+
+This backend includes CORS (Cross-Origin Resource Sharing) support to allow your frontend application to make requests:
+
+- **Development**: All origins allowed by default
+- **Production**: Configure `FRONTEND_URL` in your `.env` file for security
+
+### Example Frontend Request
+
+```javascript
+// From your frontend (e.g., React, Vue, etc.)
+const initiatePayment = async (paymentData) => {
+  try {
+    const response = await fetch('http://localhost:3000/api/mpesa/stk-push', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        amount: 100,
+        phoneNumber: '0712345678',
+        accountReference: 'ORDER123',
+        transactionDesc: 'Payment for order'
+      })
+    });
+    
+    const result = await response.json();
+    console.log(result);
+  } catch (error) {
+    console.error('Payment failed:', error);
+  }
+};
+```
 
 ## Project Structure
 
@@ -133,6 +168,10 @@ curl -X POST http://localhost:3000/api/mpesa/stk-push \
     "transactionDesc": "Test payment"
   }'
 ```
+
+### Frontend Testing
+
+If your frontend is running on a different port (e.g., `http://localhost:3001`), you can now make direct API calls from your frontend code without CORS errors.
 
 ## Production Deployment
 

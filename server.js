@@ -6,11 +6,20 @@
 require('dotenv').config();
 
 const express = require('express');
+const cors = require('cors');
 const { validateEnvironment } = require('./utils/envValidator');
 const mpesaRoutes = require('./routes/mpesa.routes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Enable CORS for frontend connections
+app.use(cors({
+  origin: process.env.NODE_ENV === 'production' 
+    ? process.env.FRONTEND_URL 
+    : true, // Allow all origins in development
+  credentials: true
+}));
 
 // Validate environment variables at startup
 // Log errors but do not crash - allows graceful degradation
