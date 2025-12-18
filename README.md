@@ -11,6 +11,21 @@ A secure, crash-safe Node.js Express backend for integrating with Safaricom's M-
 - 🛡️ **Defensive Programming**: Comprehensive error handling
 - 🌐 **CORS Enabled**: Ready for frontend integration
 
+## What You'll Learn
+
+This project demonstrates key concepts in building a production-ready Node.js backend:
+
+- **Node.js & Express.js Fundamentals**: Setting up a server, routing, middleware, and handling HTTP requests/responses
+- **External API Integration**: Connecting to Safaricom's M-Pesa Daraja API for payment processing
+- **Payment Gateway Implementation**: STK Push flow, callback handling, and transaction management
+- **Environment Management**: Secure configuration using environment variables and validation
+- **Input Validation & Sanitization**: Protecting against malicious inputs and ensuring data integrity
+- **Error Handling & Resilience**: Defensive programming techniques to prevent crashes and handle failures gracefully
+- **CORS Configuration**: Enabling secure cross-origin requests for frontend integration
+- **Phone Number Formatting**: Normalizing international phone numbers for API compatibility
+- **Security Best Practices**: Protecting sensitive data, implementing timeouts, and avoiding common vulnerabilities
+- **API Design**: Building RESTful endpoints with proper status codes and response formats
+
 ## Frontend Integration
 
 This backend includes CORS (Cross-Origin Resource Sharing) support to allow your frontend application to make requests:
